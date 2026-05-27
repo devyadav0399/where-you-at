@@ -108,7 +108,7 @@ Server broadcasts these to all connected clients on any mutation:
 
 | | |
 |---|---|
-| Frontend | Vercel — root dir `client`, env vars set in dashboard |
+| Frontend | Vercel — `https://where-you-at-pi.vercel.app`, root dir `client` |
 | Backend | Fly.io — app `server-plucky-tree-2202` (`https://server-plucky-tree-2202.fly.dev`) |
 | Database | MongoDB Atlas — cluster `cluster0.25n9olt.mongodb.net`, db `where-you-at` |
 
