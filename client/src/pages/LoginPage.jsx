@@ -67,7 +67,7 @@ export default function LoginPage() {
       <DecoPin x={220} y="calc(100% - 160px)" color="#16A34A" />
       <DecoPin x="calc(100% - 140px)" y="calc(100% - 180px)" color="#D97706" />
 
-      <div style={{ width: 440, position: 'relative', zIndex: 2 }}>
+      <div className="w-full max-w-[440px] px-4 sm:px-0" style={{ position: 'relative', zIndex: 2 }}>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: 32 }}>
           <div style={{ transform: 'scale(1.4)', transformOrigin: 'center', marginBottom: 18 }}>
             <Logo />

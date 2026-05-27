@@ -56,7 +56,7 @@ export default function ProfilePage() {
       <TopBar />
 
       <div style={{ flex: 1, overflowY: 'auto' }} className="scrollbar-thin">
-        <div style={{ maxWidth: 880, margin: '0 auto', padding: '36px 32px 48px' }}>
+        <div style={{ maxWidth: 880, margin: '0 auto' }} className="px-4 pt-9 pb-12 sm:px-8">
 
           {/* Profile card */}
           <div style={{ ...card, padding: 28, marginBottom: 32 }}>
@@ -117,11 +117,9 @@ export default function ProfilePage() {
                 .filter(Boolean);
 
               return (
-                <div key={t._id} style={{
-                  ...card, padding: 16,
-                  display: 'grid', gridTemplateColumns: 'auto 1fr auto auto',
-                  gap: 16, alignItems: 'center',
-                }}>
+                <div key={t._id} style={{ ...card, padding: 16 }}
+                     className="grid items-center gap-3 sm:gap-4 [grid-template-columns:auto_1fr_auto] sm:[grid-template-columns:auto_1fr_auto_auto]"
+                >
                   {/* Date stamp */}
                   <div style={{ width: 56, padding: '6px 0', borderRadius: 10, background: '#F4EFE5', textAlign: 'center' }}>
                     <div style={{ fontSize: 10, fontWeight: 700, color: '#6B6862', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
@@ -154,7 +152,7 @@ export default function ProfilePage() {
                   </div>
 
                   {/* Co-travelers */}
-                  <div>
+                  <div className="hidden sm:block">
                     {coTravelers.length > 0
                       ? <AvatarStack people={coTravelers} size={22} max={4} />
                       : <span style={{ fontSize: 12, color: '#A09C95', fontStyle: 'italic' }}>Solo</span>}

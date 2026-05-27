@@ -9,38 +9,41 @@ export default function TopBar() {
   const { pathname } = useLocation();
 
   const navItems = [
-    { to: '/home',    label: 'Calendar' },
-    { to: '/map',     label: 'Map' },
-    { to: '/profile', label: 'My profile' },
+    { to: '/home',    label: 'Calendar', short: 'Home' },
+    { to: '/map',     label: 'Map',      short: 'Map' },
+    { to: '/profile', label: 'My profile', short: 'Profile' },
   ];
 
   return (
-    <div style={{
-      height: 64, padding: '0 24px',
-      background: 'rgba(251,248,243,0.92)',
-      backdropFilter: 'saturate(140%) blur(10px)',
-      WebkitBackdropFilter: 'saturate(140%) blur(10px)',
-      borderBottom: '1px solid rgba(20,16,12,0.08)',
-      display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-      position: 'sticky', top: 0, zIndex: 5,
-    }}>
+    <div
+      className="h-16 px-4 sm:px-6 sticky top-0 z-[5] flex items-center justify-between border-b border-black/[0.08]"
+      style={{
+        background: 'rgba(251,248,243,0.92)',
+        backdropFilter: 'saturate(140%) blur(10px)',
+        WebkitBackdropFilter: 'saturate(140%) blur(10px)',
+      }}
+    >
       <Logo />
 
-      <nav style={{ display: 'flex', gap: 4 }}>
-        {navItems.map(({ to, label }) => {
+      <nav className="flex gap-1">
+        {navItems.map(({ to, label, short }) => {
           const active = pathname.startsWith(to);
           return (
-            <Link key={to} to={to} style={{
-              padding: '8px 14px', borderRadius: 8, fontSize: 14, fontWeight: 600,
-              color: active ? '#1A1815' : '#6B6862',
-              background: active ? 'rgba(20,16,12,0.05)' : 'transparent',
-              textDecoration: 'none',
-            }}>{label}</Link>
+            <Link key={to} to={to}
+              className="px-2 py-2 sm:px-[14px] rounded-lg text-sm font-semibold no-underline"
+              style={{
+                color: active ? '#1A1815' : '#6B6862',
+                background: active ? 'rgba(20,16,12,0.05)' : 'transparent',
+              }}
+            >
+              <span className="hidden sm:inline">{label}</span>
+              <span className="sm:hidden">{short}</span>
+            </Link>
           );
         })}
       </nav>
 
-      <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+      <div className="flex items-center gap-3">
         {user && <Avatar person={user} size={36} />}
         <button
           onClick={logout}

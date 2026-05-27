@@ -96,10 +96,10 @@ export default function HomePage() {
         <TopBar />
 
         <div style={{ flex: 1, overflow: 'auto' }} className="scrollbar-thin">
-          <div style={{ maxWidth: 1376, margin: '0 auto', padding: '28px 32px 40px' }}>
+          <div style={{ maxWidth: 1376, margin: '0 auto' }} className="px-4 pt-7 pb-10 sm:px-8">
 
             {/* Header */}
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 18 }}>
+            <div className="flex flex-col gap-3 mb-5 sm:flex-row sm:items-end sm:justify-between">
               <div>
                 <h1 style={{ fontSize: 28, fontWeight: 800, letterSpacing: '-0.025em', margin: 0 }}>
                   Where the gang's at
@@ -122,7 +122,9 @@ export default function HomePage() {
             </div>
 
             {/* Calendar */}
+            <div className="overflow-x-auto">
             <div style={{
+              minWidth: 600,
               background: '#fff', border: '1px solid rgba(20,16,12,0.08)',
               borderRadius: 16, overflow: 'hidden',
               boxShadow: '0 1px 2px rgba(20,16,12,0.04)',
@@ -266,6 +268,7 @@ export default function HomePage() {
                 );
               })}
             </div>
+            </div>{/* end overflow-x-auto */}
 
             <p style={{ marginTop: 12, textAlign: 'center', fontSize: 12, color: '#A09C95' }}>
               Showing {MONTHS[windowStart.getMonth()]} {windowStart.getFullYear()} – {MONTHS[windowEnd.getMonth()]} {windowEnd.getFullYear()}

@@ -77,7 +77,7 @@ export default function AddTripPage() {
       <TopBar />
 
       <div style={{ flex: 1, overflowY: 'auto' }} className="scrollbar-thin">
-        <div style={{ maxWidth: 720, margin: '0 auto', padding: '36px 32px 48px' }}>
+        <div style={{ maxWidth: 720, margin: '0 auto' }} className="px-4 pt-9 pb-12 sm:px-8">
 
           {/* Breadcrumb */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 14, fontSize: 13, color: '#6B6862' }}>
@@ -92,8 +92,8 @@ export default function AddTripPage() {
           <p style={{ margin: '0 0 24px', fontSize: 15, color: '#6B6862' }}>Just the basics — when you'll be away.</p>
 
           <form onSubmit={handleSubmit}>
-            <div style={{ background: '#fff', border: '1px solid rgba(20,16,12,0.08)', borderRadius: 16, padding: 24, boxShadow: '0 1px 2px rgba(20,16,12,0.04)' }}>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 18 }}>
+            <div style={{ background: '#fff', border: '1px solid rgba(20,16,12,0.08)', borderRadius: 16, boxShadow: '0 1px 2px rgba(20,16,12,0.04)' }} className="p-5 sm:p-6">
+              <div className="grid grid-cols-1 gap-[18px] sm:grid-cols-2">
 
                 <div style={{ gridColumn: '1 / -1', ...fieldStyle }}>
                   <label style={labelStyle}>Trip name</label>
