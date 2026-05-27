@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body, #root { height: 100%; margin: 0; padding: 0; }
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    background: #FBF8F3;
+    color: #1A1815;
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: -0.005em;
+  }
+}
+
+@layer utilities {
+  .scrollbar-thin::-webkit-scrollbar { width: 6px; height: 6px; }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: rgba(20,16,12,0.12);
+    border-radius: 999px;
+  }
+}
+
+/* Reset Leaflet's default DivIcon white box */
+.wya-map-pin {
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}

@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gunzip -c \"/Users/devyadav/.claude/projects/-Users-devyadav-development-personal-repos-where-you-at/541b2dca-9990-4424-b3da-501c8440cb2b/tool-results/webfetch-1779892581057-gtxb81.bin\")",
+      "Bash(tar -x -C /tmp/where-you-at-design)"
+    ]
+  }
+}
