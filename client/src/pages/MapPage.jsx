@@ -156,20 +156,18 @@ export default function MapPage() {
       <div style={{ height: '100vh', display: 'flex', flexDirection: 'column', background: '#FBF8F3' }}>
         <TopBar />
 
-        <div style={{ flex: 1, display: 'flex', minHeight: 0 }}>
+        <div className="flex flex-col sm:flex-row" style={{ flex: 1, minHeight: 0 }}>
           {/* ── Sidebar ── */}
-          <div style={{
-            width: 320, flexShrink: 0, borderRight: '1px solid rgba(20,16,12,0.08)',
-            display: 'flex', flexDirection: 'column', background: '#FBF8F3',
-          }}>
-            <div style={{ padding: '24px 20px 12px' }}>
+          <div className="flex flex-col sm:w-80 sm:flex-shrink-0 border-b border-black/[0.08] sm:border-b-0 sm:border-r"
+               style={{ background: '#FBF8F3' }}>
+            <div style={{ padding: '16px 20px 10px' }} className="sm:pt-6">
               <h1 style={{ fontSize: 28, fontWeight: 800, letterSpacing: '-0.025em', margin: 0 }}>Right now</h1>
               <p style={{ margin: '4px 0 0', fontSize: 14, color: '#6B6862' }}>
                 {homeCount} home · {awayCount} away
               </p>
             </div>
 
-            <div style={{ flex: 1, overflowY: 'auto', padding: '0 20px 24px' }} className="scrollbar-thin">
+            <div className="overflow-y-auto max-h-[38vh] sm:max-h-none flex-1 scrollbar-thin" style={{ padding: '0 20px 20px' }}>
               {groups.map((group) => {
                 const allAway = group.people.every((p) => p.isAway);
                 return (
