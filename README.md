@@ -13,7 +13,7 @@ A shared Gantt-style calendar for a close friend group (~10 people) to see where
 | Database | MongoDB Atlas (Mongoose) |
 | Auth | JWT (stateless, Bearer token) |
 | Frontend deploy | Vercel |
-| Backend deploy | Railway |
+| Backend deploy | Fly.io |
 
 Real-time updates are pushed via Socket.io so all open tabs update instantly without polling.
 
@@ -104,6 +104,41 @@ Server broadcasts these to all connected clients on any mutation:
 
 ## Deployment
 
-**Backend (Railway):** Set the env vars from `server/.env.example`. Railway needs a long-running process for Socket.io — Vercel serverless won't work here.
+### Live infrastructure
 
-**Frontend (Vercel):** Set `VITE_API_URL` to your Railway backend URL and `VITE_MAPBOX_TOKEN`. Set `CLIENT_URL` on the server side to your Vercel URL so CORS allows it.
+| | |
+|---|---|
+| Frontend | Vercel — root dir `client`, env vars set in dashboard |
+| Backend | Fly.io — app `server-plucky-tree-2202` (`https://server-plucky-tree-2202.fly.dev`) |
+| Database | MongoDB Atlas — cluster `cluster0.25n9olt.mongodb.net`, db `where-you-at` |
+
+### Redeploy backend
+
+```bash
+cd server && fly deploy
+```
+
+### Update backend secrets
+
+```bash
+fly secrets set KEY="value" --app server-plucky-tree-2202
+```
+
+Secrets needed: `MONGODB_URI`, `JWT_SECRET`, `CLIENT_URL` (set to the Vercel frontend URL).
+
+### Frontend env vars (Vercel dashboard)
+
+```
+VITE_API_URL=https://server-plucky-tree-2202.fly.dev
+VITE_MAPBOX_TOKEN=<token>
+```
+
+Production values are also committed in `client/.env.production`.
+
+### After changing the Vercel URL
+
+Update `CLIENT_URL` on Fly.io so CORS keeps working:
+
+```bash
+fly secrets set CLIENT_URL="https://your-app.vercel.app" --app server-plucky-tree-2202
+```
